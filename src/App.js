@@ -13,6 +13,7 @@ import "./App.css";
 function BooksApp() {
 
   const [Books, setBooks] = useState([]);
+  // eslint-disable-next-line 
   const [Book, setBook] = useState('');
 
   useEffect(() => {
@@ -26,14 +27,15 @@ function BooksApp() {
   const onChangeShelf = (book, shelf) => {
     book.shelf = shelf;
     
-    setBook(book);
-
-    if (shelf === "none") {
-      Books.splice(Books.indexOf(book), 1);
-    }
-
     // componentDidUpdate
     BooksAPI.update(book, shelf)
+    
+    setBook(book);
+
+    // if (shelf === "none") {
+    //   Books.splice(Books.indexOf(book), 1);
+    // }
+
   };
 
   return (

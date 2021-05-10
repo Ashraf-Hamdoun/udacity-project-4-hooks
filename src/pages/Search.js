@@ -5,24 +5,37 @@ import * as BooksAPI from '../BooksAPI'
 import Book from "../components/Book";
 
 export function Search(props) {
+  
   // Variable to store the search input text
   const [Query, setQuery] = useState('');
+  
   // Variable to store the books of the search
   const [SearchBooks, setSearchBooks] = useState([]);
   
   function onChangeShelf(book, shelf) {
+    
+    let sameId = '';
+
     // Compare between arrays and remove duplicates
     for (let i = 0; i < props.books.length; i++) {
       const element = props.books[i];
       // compare
       if (element.id === book.id) {
-        props.books.splice(i, 1);
+        props.books[i].shelf = shelf; 
         console.log("Warning ::: I found the same book");
+        sameId = element.id;
       }
     }
 
-    book.shelf = shelf;
-    props.books.push(book);
+    if (book.id === sameId) {
+      book.shelf = shelf;
+      console.log('Shelf changed successfully ....');
+    } else {
+      book.shelf = shelf;
+      props.books.push(book);
+      console.log('Book added successfully ....');
+    }
+    
 
     
     // componentDidUpdate

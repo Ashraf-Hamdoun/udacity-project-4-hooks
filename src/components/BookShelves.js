@@ -15,6 +15,7 @@ export function BookShelves(props) {
       <BookShelf title="Currently Reading" books={filterBooks("currentlyReading")} onChangeShelf={props.onChangeShelf} />
       <BookShelf title="Want to Read" books={filterBooks("wantToRead")} onChangeShelf={props.onChangeShelf} />
       <BookShelf title="Read" books={filterBooks("read")} onChangeShelf={props.onChangeShelf} />
+      {/* <BookShelf title="Keep it close" books={filterBooks("none")} onChangeShelf={props.onChangeShelf} /> */}
     </div>
   );
 }
